@@ -11,12 +11,26 @@ export const MainContainer = styled.div`
 export const CustomDiv = styled.div`
   width: 100%;
   padding: 36px 15%;
+  display: flex;
+  flex-direction: column;
+
   @media (max-width: 600px) {
     padding: 36px 5%;
   }
 
   & .MuiRadio-colorPrimary.Mui-checked {
     color: ${Colors.red};
+  }
+`;
+
+export const CustomDivCardContainer = styled.div`
+  width: 100%;
+  padding: 36px 15%;
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
   }
 `;
 
@@ -52,7 +66,14 @@ export const DivHeader = styled.div`
   > h3 {
     font-size: 26px;
     font-family: Arial, Helvetica, sans-serif;
-    color: ${Colors.red};
+    color: #232129;
     font-weight: bold;
   }
+`;
+
+export const CustomDivFavoriteContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
 `;

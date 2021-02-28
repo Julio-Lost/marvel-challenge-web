@@ -1,12 +1,14 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-import { useState } from 'react';
+import { IconButton } from '@material-ui/core';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
+import React, { useState } from 'react';
+import { FiArrowRight } from 'react-icons/fi';
+import { GenericCard } from '../../../shared/components/GenericCard/GenericCard';
 import Layout from '../../../shared/components/Layout';
-import * as S from './styles';
 import { InputSearch } from '../../../shared/components/Search/InputSearch';
+import * as S from './styles';
 
 export const Dashboard = () => {
   const [placeholderInputSearch, setPlaceholderInputSeact] = useState<string>('um personagem');
@@ -20,12 +22,13 @@ export const Dashboard = () => {
       <Layout headerActive>
         <S.CustomDiv>
           <S.DivHeader>
-            <h3>Seus personagens favoritos</h3>
-          </S.DivHeader>
-        </S.CustomDiv>
-        <S.CustomDiv>
-          <S.DivHeader>
-            <h3>Seus Quadrinhos favoritas</h3>
+            <h3>Acesse seus favoritos</h3>
+            <S.CustomDivFavoriteContainer>
+              <span style={{ fontSize: 14 }}>Ver favoritos</span>
+              <IconButton aria-label="add to favorites">
+                <FiArrowRight color="red" />
+              </IconButton>
+            </S.CustomDivFavoriteContainer>
           </S.DivHeader>
         </S.CustomDiv>
         <S.CustomDiv>
@@ -49,6 +52,11 @@ export const Dashboard = () => {
             </FormControl>
           </S.CustomDivRadioButton>
         </S.CustomDiv>
+        <S.CustomDivCardContainer>
+          <GenericCard />
+          <GenericCard />
+          <GenericCard />
+        </S.CustomDivCardContainer>
       </Layout>
     </S.MainContainer>
   );
