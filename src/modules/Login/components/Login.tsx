@@ -37,7 +37,10 @@ export const Login: React.FC = () => {
           abortEarly: false,
         });
 
-        //FUNCAO
+        // await signIn({
+        //   email: data.email,
+        //   password: data.password,
+        // });
 
         history.push('/dashboard');
       } catch (err) {
@@ -50,9 +53,14 @@ export const Login: React.FC = () => {
           return;
         }
 
-        //TOAST
+        // addToast({
+        //   type: 'error',
+        //   title: 'Erro na autenticação',
+        //   description: 'Ocorreu um erro ao fazer login, cheque as credenciais.',
+        // });
       }
     },
+    // [signIn, history, addToast],
     [history],
   );
 
