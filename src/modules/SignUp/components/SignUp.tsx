@@ -65,6 +65,7 @@ export const SignUp: React.FC = () => {
         // });
       }
     },
+    // [addToast, history],
     [history],
   );
 

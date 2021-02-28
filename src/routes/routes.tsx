@@ -4,6 +4,7 @@ import { LinearProgress } from '@material-ui/core';
 
 import { LOGIN_PATH, LoginRoute } from './Login.routes';
 import { SIGNUP_PATH, SignUpRoute } from './SignUp.routes';
+import { DASHBOARD_PATH, DashboardRoute } from './Dashboard.routes';
 
 const Routes = () => {
   const routes = (
@@ -11,6 +12,7 @@ const Routes = () => {
       <Switch>
         <Route exact path={LOGIN_PATH.Main} component={LoginRoute} />
         <Route exact path={SIGNUP_PATH.Main} component={SignUpRoute} />
+        <Route exact path={DASHBOARD_PATH.Main} component={DashboardRoute} />
       </Switch>
     </BrowserRouter>
   );
