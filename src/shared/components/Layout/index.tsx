@@ -19,10 +19,6 @@ const Layout: React.FC<ILayout> = ({ children, headerActive }) => {
     setModal(value);
   };
 
-  const navigateProfile = () => {
-    history.push('/update-profile');
-  };
-
   const actionOpenModal = () => {
     setModal(true);
   };
@@ -39,7 +35,7 @@ const Layout: React.FC<ILayout> = ({ children, headerActive }) => {
             <img src={marvelLogo} alt="logo-marvel" loading="lazy" style={{ width: 36, height: 36 }} />
             <S.ProfileContainer>
               <strong>Bem-vindo,</strong>
-              <S.NameUser onClick={navigateProfile}>teste</S.NameUser>
+              <S.NameUser>teste</S.NameUser>
             </S.ProfileContainer>
           </div>
           <div>
