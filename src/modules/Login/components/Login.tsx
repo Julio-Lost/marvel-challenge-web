@@ -18,7 +18,7 @@ interface SignInFormData {
   password: string;
 }
 
-export const Login: React.FC = () => {
+export const Login = () => {
   const formRef = useRef<FormHandles>(null);
 
   const history = useHistory();
