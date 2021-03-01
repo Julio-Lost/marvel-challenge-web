@@ -78,3 +78,25 @@ export const CustomDivFavoriteContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
 `;
+
+export const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: ${Colors.white};
+  padding: 0px 15%;
+  @media (max-width: 600px) {
+    padding: 0px 5%;
+  }
+`;
+
+export const DivTitle = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  > h4 {
+    font-weight: bold;
+    color: ${Colors.gray3};
+  }
+`;

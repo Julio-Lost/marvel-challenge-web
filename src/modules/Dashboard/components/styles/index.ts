@@ -21,6 +21,10 @@ export const CustomDiv = styled.div`
   & .MuiRadio-colorPrimary.Mui-checked {
     color: ${Colors.red};
   }
+
+  & .MuiIconButton-colorPrimary {
+    color: ${Colors.gray3};
+  }
 `;
 
 export const CustomDivCardContainer = styled.div`

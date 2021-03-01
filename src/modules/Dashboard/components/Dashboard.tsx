@@ -10,7 +10,11 @@ import Layout from '../../../shared/components/Layout';
 import { InputSearch } from '../../../shared/components/Search/InputSearch';
 import * as S from './styles';
 
-export const Dashboard = () => {
+interface DashboardPros {
+  navigateToFavorites: () => void;
+}
+
+export const Dashboard = ({ navigateToFavorites }: DashboardPros) => {
   const [placeholderInputSearch, setPlaceholderInputSeact] = useState<string>('um personagem');
 
   const actionSearch = async () => {
@@ -25,7 +29,7 @@ export const Dashboard = () => {
             <h3>Acesse seus favoritos</h3>
             <S.CustomDivFavoriteContainer>
               <span style={{ fontSize: 14 }}>Ver favoritos</span>
-              <IconButton aria-label="add to favorites">
+              <IconButton aria-label="see favorites" onClick={navigateToFavorites}>
                 <FiArrowRight color="red" />
               </IconButton>
             </S.CustomDivFavoriteContainer>
