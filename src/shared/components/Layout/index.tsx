@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom';
 import marvelLogo from '../../../assets/logo-header.svg';
 import * as S from './styles';
 import { Modal } from '../Modal';
+import { useAuthenticationContext } from '../../../context/reducers/auth/authContext';
+import { AuthAsyncActions } from '../../../context/actions/authAsyncAction';
 
 export interface ILayout {
   headerActive: boolean;
@@ -14,6 +16,10 @@ const Layout: React.FC<ILayout> = ({ children, headerActive }) => {
   const [modal, setModal] = useState<boolean>(false);
 
   const history = useHistory();
+  const { state } = useAuthenticationContext();
+  const { logoutRequestAction } = AuthAsyncActions();
+
+  const name = state.user.userName;
 
   const handleModal = (value: boolean) => {
     setModal(value);
@@ -23,8 +29,12 @@ const Layout: React.FC<ILayout> = ({ children, headerActive }) => {
     setModal(true);
   };
 
-  const actionLogou = () => {
-    console.log('logout');
+  const logoutAction = () => {
+    logoutRequestAction();
+  };
+
+  const navigateToProfile = () => {
+    history.push('/profile');
   };
 
   return (
@@ -32,14 +42,14 @@ const Layout: React.FC<ILayout> = ({ children, headerActive }) => {
       {headerActive && (
         <S.Header>
           <div>
-            <img src={marvelLogo} alt="logo-marvel" loading="lazy" style={{ width: 36, height: 36 }} />
+            <S.MarvelLogo src={marvelLogo} alt="logo-marvel" loading="lazy" />
             <S.ProfileContainer>
               <strong>Bem-vindo,</strong>
-              <S.NameUser>teste</S.NameUser>
+              <S.NameUser>{name}</S.NameUser>
             </S.ProfileContainer>
           </div>
           <div>
-            <IconButton onClick={actionOpenModal}>
+            <IconButton onClick={navigateToProfile}>
               <FiSettings size={24} fontSize="bold" />
             </IconButton>
             <IconButton onClick={actionOpenModal}>
@@ -49,7 +59,7 @@ const Layout: React.FC<ILayout> = ({ children, headerActive }) => {
         </S.Header>
       )}
       {children}
-      {modal && <Modal openModal={modal} handleModal={handleModal} actionButtonConfirm={actionLogou} />}
+      {modal && <Modal openModal={modal} handleModal={handleModal} actionButtonConfirm={logoutAction} />}
     </S.MainContainer>
   );
 };

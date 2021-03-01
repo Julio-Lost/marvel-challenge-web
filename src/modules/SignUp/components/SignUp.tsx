@@ -1,31 +1,26 @@
-import React, { useCallback, useRef } from 'react';
-import { FiArrowLeft, FiMail, FiUser, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
+import React, { useCallback, useRef } from 'react';
+import { FiArrowLeft, FiLock, FiMail, FiUser } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
-import { Link, useHistory } from 'react-router-dom';
-
-import getValidationErrors from '../../../shared/validations/getValidationErros';
-
 import logoImg from '../../../assets/logo.svg';
-
-import Input from '../../../shared/components/form/Input';
+import { IRequestCreateUser } from '../../../models/CreateUser';
 import Button from '../../../shared/components/Button';
+import Input from '../../../shared/components/form/Input';
+import getValidationErrors from '../../../shared/validations/getValidationErros';
+import { AnimationContainer, Background, Container, Content } from './styles';
 
-import { Container, Content, AnimationContainer, Background } from './styles';
-
-interface SignUpFormData {
-  name: string;
-  email: string;
-  password: string;
+interface SignUpProps {
+  actionCreateUser: (data: IRequestCreateUser) => Promise<boolean>;
+  loading: boolean;
 }
 
-export const SignUp: React.FC = () => {
+export const SignUp = ({ actionCreateUser, loading }: SignUpProps) => {
   const formRef = useRef<FormHandles>(null);
-  const history = useHistory();
 
   const handleSubmit = useCallback(
-    async (data: SignUpFormData) => {
+    async (data: IRequestCreateUser) => {
       try {
         formRef.current?.setErrors({});
 
@@ -39,57 +34,36 @@ export const SignUp: React.FC = () => {
           abortEarly: false,
         });
 
-        // await api.post('/users', data);
-
-        history.push('/');
-
-        // addToast({
-        //   type: 'success',
-        //   title: 'Cadastro realizado!',
-        //   description: 'Você já pode fazer seu logon no GoBarber!',
-        // });
+        await actionCreateUser(data);
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
-
           formRef.current?.setErrors(errors);
-
-          // eslint-disable-next-line no-useless-return
           return;
         }
-
-        // addToast({
-        //   type: 'error',
-        //   title: 'Erro no cadastro',
-        //   description: 'Ocorreu um erro ao fazer cadastro, tente novamente.',
-        // });
       }
     },
-    // [addToast, history],
-    [history],
+    [actionCreateUser],
   );
 
   return (
     <Container>
       <Background />
-
       <Content>
         <AnimationContainer>
           <img src={logoImg} alt="marvel-logo" />
-
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Faça seu cadastro</h1>
-
             <Input name="name" icon={FiUser} placeholder="Nome" />
             <Input name="email" icon={FiMail} placeholder="E-mail" />
             <Input name="password" icon={FiLock} type="password" placeholder="Senha" />
-
-            <Button type="submit">Cadastrar</Button>
+            <Button type="submit" disabled={loading}>
+              Cadastrar
+            </Button>
           </Form>
-
           <Link to="/">
             <FiArrowLeft />
-            Voltar para logon
+            Voltar para login
           </Link>
         </AnimationContainer>
       </Content>

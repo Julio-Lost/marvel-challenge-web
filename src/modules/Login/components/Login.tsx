@@ -1,30 +1,28 @@
-/* eslint-disable spaced-comment */
-import React, { useRef, useCallback } from 'react';
-import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
+import { useSnackbar } from 'notistack';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
+import React, { useCallback, useRef } from 'react';
+import { FiLock, FiLogIn, FiMail } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
-import { Link, useHistory } from 'react-router-dom';
 import logoImg from '../../../assets/logo.svg';
+import { IRequestSession } from '../../../models/Login';
+import Button from '../../../shared/components/Button';
+import Input from '../../../shared/components/form/Input';
+import { AnimationContainer, Background, Container, Content } from './styles';
 import getValidationErrors from '../../../shared/validations/getValidationErros';
 
-import Input from '../../../shared/components/form/Input';
-import Button from '../../../shared/components/Button';
-
-import { Container, Content, AnimationContainer, Background } from './styles';
-
-interface SignInFormData {
-  email: string;
-  password: string;
+interface LoginProps {
+  createSessionAction: (data: IRequestSession) => Promise<boolean>;
+  loading: boolean;
 }
 
-export const Login = () => {
+export const Login = ({ createSessionAction, loading }: LoginProps) => {
   const formRef = useRef<FormHandles>(null);
-
-  const history = useHistory();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = useCallback(
-    async (data: SignInFormData) => {
+    async (data: IRequestSession) => {
       try {
         formRef.current?.setErrors({});
 
@@ -37,31 +35,19 @@ export const Login = () => {
           abortEarly: false,
         });
 
-        // await signIn({
-        //   email: data.email,
-        //   password: data.password,
-        // });
-
-        history.push('/dashboard');
+        await createSessionAction(data);
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
 
-          // eslint-disable-next-line no-useless-return
           return;
         }
-
-        // addToast({
-        //   type: 'error',
-        //   title: 'Erro na autenticação',
-        //   description: 'Ocorreu um erro ao fazer login, cheque as credenciais.',
-        // });
+        enqueueSnackbar('Ocorreu um erro ao fazer login, cheque as credenciais.', { variant: 'error' });
       }
     },
-    // [signIn, history, addToast],
-    [history],
+    [createSessionAction, enqueueSnackbar],
   );
 
   return (
@@ -69,23 +55,20 @@ export const Login = () => {
       <Content>
         <AnimationContainer>
           <img src={logoImg} alt="marvel-logo" />
-
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Faça seu login</h1>
-
             <Input name="email" icon={FiMail} placeholder="E-mail" />
             <Input name="password" icon={FiLock} type="password" placeholder="Senha" />
-
-            <Button type="submit">Entrar</Button>
+            <Button type="submit" disabled={loading}>
+              Entrar
+            </Button>
           </Form>
-
           <Link to="/signup">
             <FiLogIn />
             Criar conta
           </Link>
         </AnimationContainer>
       </Content>
-
       <Background />
     </Container>
   );
