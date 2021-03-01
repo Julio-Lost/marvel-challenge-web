@@ -7,6 +7,7 @@ import { SIGNUP_PATH, SignUpRoute } from './SignUp.routes';
 import { DASHBOARD_PATH, DashboardRoute } from './Dashboard.routes';
 import { FAVORITES_PATH, FavoritesRoute } from './Favorites.routes';
 import InfoRoute, { INFO_PATH } from './Info.routes';
+import { PROFILE_PATH, ProfileRoute } from './Profile.routes';
 
 const Routes = () => {
   const routes = (
@@ -18,6 +19,7 @@ const Routes = () => {
         <Route exact path={FAVORITES_PATH.Main} component={FavoritesRoute} />
         <Route exact path={INFO_PATH.CharacterInfo} component={InfoRoute} />
         <Route exact path={INFO_PATH.ComicInfo} component={InfoRoute} />
+        <Route exact path={PROFILE_PATH.Main} component={ProfileRoute} />
       </Switch>
     </BrowserRouter>
   );
