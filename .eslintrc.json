@@ -21,6 +21,11 @@
     "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
     "rules": {
       "prettier/prettier": "warn",
+      "no-shadow": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "no-useless-return": "off",
+      "@typescript-eslint/no-shadow": ["error"],
+      "@typescript-eslint/no-non-null-assertion": "off",
       "react/jsx-props-no-spreading": "off",
       "react/prop-types": "off",
       "react/jsx-closing-bracket-location": "off",

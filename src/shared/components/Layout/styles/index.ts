@@ -48,10 +48,7 @@ export const NameUser = styled.div`
   transition: 0.5s;
 `;
 
-export const Footer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ${Colors.gray4};
-  padding: 4px;
+export const MarvelLogo = styled.img`
+  width: 36px;
+  height: 36px;
 `;
