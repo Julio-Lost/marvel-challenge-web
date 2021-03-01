@@ -6,7 +6,7 @@ import { LOGIN_PATH, LoginRoute } from './Login.routes';
 import { SIGNUP_PATH, SignUpRoute } from './SignUp.routes';
 import { DASHBOARD_PATH, DashboardRoute } from './Dashboard.routes';
 import { FAVORITES_PATH, FavoritesRoute } from './Favorites.routes';
-import { INFO_PATH, InfoRoute } from './Info.routes';
+import InfoRoute, { INFO_PATH } from './Info.routes';
 
 const Routes = () => {
   const routes = (
@@ -17,6 +17,7 @@ const Routes = () => {
         <Route exact path={DASHBOARD_PATH.Main} component={DashboardRoute} />
         <Route exact path={FAVORITES_PATH.Main} component={FavoritesRoute} />
         <Route exact path={INFO_PATH.CharacterInfo} component={InfoRoute} />
+        <Route exact path={INFO_PATH.ComicInfo} component={InfoRoute} />
       </Switch>
     </BrowserRouter>
   );

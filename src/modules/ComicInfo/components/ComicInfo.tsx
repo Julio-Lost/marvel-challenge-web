@@ -6,7 +6,7 @@ import Layout from '../../../shared/components/Layout';
 import { Colors } from '../../../useful/constants/colors';
 import * as S from './styles';
 
-export const CharacterInfo = () => {
+export const ComicInfo = () => {
   return (
     <S.MainContainer>
       <Layout headerActive>
@@ -15,7 +15,7 @@ export const CharacterInfo = () => {
             <IoMdArrowBack color={Colors.red} />
           </IconButton>
           <S.DivTitle>
-            <h4>Quadrinho(s) relacionados ao personagem</h4>
+            <h4>Personagens relacionados ao quadrinho</h4>
           </S.DivTitle>
         </S.Header>
         <S.CustomDiv>
