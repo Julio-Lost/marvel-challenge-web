@@ -19,7 +19,7 @@ export const Favorites = ({ navigateToDashboard }: FavoritesProps) => {
             <IoMdArrowBack color={Colors.red} />
           </IconButton>
           <S.DivTitle>
-            <h4>Revistas</h4>
+            <h4>Favoritos</h4>
           </S.DivTitle>
         </S.Header>
         <S.CustomDiv>

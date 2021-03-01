@@ -46,11 +46,6 @@ export const NameUser = styled.div`
   color: ${Colors.red};
   padding: 5px 8px;
   transition: 0.5s;
-  &:hover {
-    background: ${Colors.gray6};
-    border-radius: 10px;
-    cursor: pointer;
-  }
 `;
 
 export const Footer = styled.div`
