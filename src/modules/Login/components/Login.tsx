@@ -10,6 +10,7 @@ import Button from '../../../shared/components/Button';
 import Input from '../../../shared/components/Form/Input';
 import { AnimationContainer, Background, Container, Content } from './styles';
 import getValidationErrors from '../../../shared/validations/getValidationErros';
+import { Loading } from '../../../shared/components/Loading';
 
 interface LoginProps {
   createSessionAction: (data: IRequestSession) => Promise<boolean>;
@@ -56,9 +57,13 @@ export const Login = ({ createSessionAction, loading }: LoginProps) => {
             <h1>Faça seu login</h1>
             <Input name="email" icon={FiMail} placeholder="E-mail" />
             <Input name="password" icon={FiLock} type="password" placeholder="Senha" />
-            <Button type="submit" disabled={loading}>
-              Entrar
-            </Button>
+            {loading ? (
+              <Loading />
+            ) : (
+              <Button type="submit" disabled={loading}>
+                Entrar
+              </Button>
+            )}
           </Form>
           <Link to="/signup">
             <FiLogIn />

@@ -92,11 +92,11 @@ export const GenericCard = ({
         )}
         {cardFavorite ? (
           <IconButton onClick={handleRemoveFavoriteAction}>
-            <S.Star loading={loadingStar} color={Colors.yellow} />
+            <S.Star $loading={loadingStar} color={Colors.yellow} />
           </IconButton>
         ) : (
           <IconButton onClick={handleAddFavoriteAction}>
-            <S.StarBorder loading={loadingStar} color={Colors.white} />
+            <S.StarBorder $loading={loadingStar} color={Colors.white} />
           </IconButton>
         )}
         <Tooltip title="Detalhes">
