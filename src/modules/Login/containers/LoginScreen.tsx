@@ -1,3 +1,4 @@
+import { useSnackbar } from 'notistack';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { AuthAsyncActions } from '../../../context/actions/authAsyncAction';
@@ -8,6 +9,7 @@ export const LoginScreen = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
   const { loginRequestAction } = AuthAsyncActions();
+  const { enqueueSnackbar } = useSnackbar();
 
   const createSessionAction = async (data: IRequestSession) => {
     try {
@@ -20,6 +22,7 @@ export const LoginScreen = () => {
       return response.success;
     } catch (error) {
       setLoading(false);
+      enqueueSnackbar('Ocorreu um erro ao fazer login, cheque as credenciais.', { variant: 'error' });
       return false;
     }
   };

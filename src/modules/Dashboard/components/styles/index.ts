@@ -32,6 +32,7 @@ export const CustomDivCardContainer = styled.div`
   padding: 36px 15%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
 
   @media (max-width: 600px) {
     flex-direction: column;
@@ -80,4 +81,8 @@ export const CustomDivFavoriteContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+`;
+
+export const CustomSpan = styled.span`
+  font-size: 14px;
 `;

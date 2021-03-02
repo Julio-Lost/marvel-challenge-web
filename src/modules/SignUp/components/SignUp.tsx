@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import logoImg from '../../../assets/logo.svg';
 import { IRequestCreateUser } from '../../../models/CreateUser';
 import Button from '../../../shared/components/Button';
-import Input from '../../../shared/components/form/Input';
+import Input from '../../../shared/components/Form/Input';
 import getValidationErrors from '../../../shared/validations/getValidationErros';
 import { AnimationContainer, Background, Container, Content } from './styles';
 

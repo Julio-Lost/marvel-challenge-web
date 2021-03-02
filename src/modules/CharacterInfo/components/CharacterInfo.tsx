@@ -1,33 +1,40 @@
+/* eslint-disable no-nested-ternary */
 import { Grid, IconButton } from '@material-ui/core';
 import React from 'react';
 import { IoMdArrowBack } from 'react-icons/io';
-import { GenericCard } from '../../../shared/components/GenericCard/GenericCard';
-import Layout from '../../../shared/components/Layout';
+import { IGenericCard } from '../../../shared/components/GenericCard/GenericCard';
+import { ListCard } from '../../../shared/components/GenericCard/ListCard';
+import { Loading } from '../../../shared/components/Loading';
+import { NoResults } from '../../../shared/components/NoResults';
 import { Colors } from '../../../useful/constants/colors';
 import * as S from './styles';
 
-export const CharacterInfo = () => {
+interface CharacterInfoProps {
+  navigateToDashboard: () => void;
+  characters: IGenericCard[];
+  loading: boolean;
+}
+
+export const CharacterInfo = ({ navigateToDashboard, characters, loading }: CharacterInfoProps) => {
   return (
     <S.MainContainer>
-      <Layout headerActive>
-        <S.Header>
-          <IconButton>
-            <IoMdArrowBack color={Colors.red} />
-          </IconButton>
-          <S.DivTitle>
-            <h4>Quadrinho(s) relacionados ao personagem</h4>
-          </S.DivTitle>
-        </S.Header>
-        <S.CustomDiv>
-          <S.CustomDivContainer>
-            <Grid justify="center" container spacing={4}>
-              <S.CustomGrid key={Math.random()} item xs={12} sm={6} md={6} lg={4}>
-                <GenericCard />
-              </S.CustomGrid>
-            </Grid>
-          </S.CustomDivContainer>
-        </S.CustomDiv>
-      </Layout>
+      <S.Header>
+        <IconButton onClick={navigateToDashboard}>
+          <IoMdArrowBack color={Colors.red} />
+        </IconButton>
+        <S.DivTitle>
+          <h4>Personagens relacionados ao quadrinho</h4>
+        </S.DivTitle>
+      </S.Header>
+      <S.CustomDiv>
+        <S.CustomDivContainer>
+          <Grid justify="center" container spacing={4}>
+            <S.CustomGrid key={Math.random()} item xs={12} sm={6} md={6} lg={4}>
+              {loading ? <Loading /> : characters.length === 0 ? <NoResults /> : <ListCard data={characters} />}
+            </S.CustomGrid>
+          </Grid>
+        </S.CustomDivContainer>
+      </S.CustomDiv>
     </S.MainContainer>
   );
 };

@@ -1,80 +1,101 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { CardActions, IconButton } from '@material-ui/core';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
+import { IconButton } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
-import { FiBook, FiExternalLink, FiUser } from 'react-icons/fi';
 import Tooltip from '@material-ui/core/Tooltip';
 import { useState } from 'react';
-
-import * as S from './styles';
+import { FiBook, FiExternalLink, FiUser } from 'react-icons/fi';
+import { InfoCard, typeCard } from '../../../models/Card';
 import { Colors } from '../../../useful/constants/colors';
+import * as S from './styles';
 
-export const GenericCard = () => {
-  const isFavorite = false;
+export interface IGenericCard {
+  id: string;
+  type: typeCard;
+  description?: string | null;
+  imgUrl: string;
+  isFavorite: boolean;
+  title: string;
+  linkDetail: string;
+  actionAddFavorite?: (data: InfoCard) => Promise<boolean>;
+  actionRemoveFavorite?: (id: string) => Promise<boolean>;
+  actionNavigate?: (id: string, type: typeCard) => void;
+}
+
+export const GenericCard = ({
+  id,
+  type,
+  imgUrl,
+  isFavorite,
+  title,
+  linkDetail,
+  actionAddFavorite,
+  actionRemoveFavorite,
+  actionNavigate,
+}: IGenericCard) => {
   const [loadingStar, setLoadingStar] = useState<boolean>(false);
   const [cardFavorite, setCardFavorite] = useState<boolean>(isFavorite);
 
-  const url = 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/433ybv_com_crd_01.jpg';
-  let type = 'Comic';
-  const handleActionAddFavorite = async () => {
-    // if (actionAddFavorite) {
-    // setLoadingStar(true);
-    // const info: InfoCard = {
-    //   id,
-    //   imgUrl,
-    //   title,
-    //   linkDetail,
-    // };
-    // const response = await actionAddFavorite(info);
+  const handleAddFavoriteAction = async () => {
+    if (actionAddFavorite) {
+      setLoadingStar(true);
+      const info: InfoCard = {
+        id,
+        imgUrl,
+        title,
+        linkDetail,
+      };
+      const response = await actionAddFavorite(info);
 
-    setCardFavorite(true);
-    setLoadingStar(false);
-    // }
+      setCardFavorite(response);
+      setLoadingStar(false);
+    }
   };
 
-  const handleActionRemoveFavorite = async () => {
-    // if (actionRemoveFavorite) {
-    //   setLoadingStar(true);
-    //   const response = await actionRemoveFavorite(id);
+  const handleRemoveFavoriteAction = async () => {
+    if (actionRemoveFavorite) {
+      setLoadingStar(true);
+      const response = await actionRemoveFavorite(id);
 
-    setCardFavorite(false);
-    setLoadingStar(false);
-    // }
+      setCardFavorite(response);
+      setLoadingStar(false);
+    }
   };
 
   const actionDetail = () => {
-    type = 'Character';
-    window.location.href = url;
+    window.location.href = linkDetail;
   };
 
   return (
-    <Card style={{ backgroundColor: 'black', color: 'white', borderRadius: 20, margin: 4 }}>
-      <CardHeader title="BLACK WIDOW" />
+    <S.CardMainContainer>
+      <S.HeaderContainer>{title}</S.HeaderContainer>
       <CardMedia>
-        <S.CardContainer imgurl={url} />
+        <S.CardContainer imgurl={imgUrl} />
       </CardMedia>
-      <CardActions style={{ display: 'flex', justifyContent: 'center' }}>
-        {type === 'Comic' ? (
-          <Tooltip title="Quadrinhos">
-            <IconButton aria-label="quadrinhos">
-              <FiBook color="white" />
-            </IconButton>
-          </Tooltip>
-        ) : (
-          <Tooltip title="Personagens">
-            <IconButton aria-label="personagem">
-              <FiUser color="white" />
-            </IconButton>
-          </Tooltip>
+      <S.CardActionsContainer>
+        {actionNavigate && (
+          <>
+            {type === 'Character' && (
+              <Tooltip title="Quadrinhos">
+                <IconButton aria-label="quadrinhos" onClick={() => actionNavigate!(id, type)}>
+                  <FiBook color="white" />
+                </IconButton>
+              </Tooltip>
+            )}
+            {type === 'Comic' && (
+              <Tooltip title="Personagens">
+                <IconButton aria-label="personagem" onClick={() => actionNavigate!(id, type)}>
+                  <FiUser color="white" />
+                </IconButton>
+              </Tooltip>
+            )}
+          </>
         )}
-
         {cardFavorite ? (
-          <IconButton onClick={handleActionRemoveFavorite}>
+          <IconButton onClick={handleRemoveFavoriteAction}>
             <S.Star loading={loadingStar} color={Colors.yellow} />
           </IconButton>
         ) : (
-          <IconButton onClick={handleActionAddFavorite}>
+          <IconButton onClick={handleAddFavoriteAction}>
             <S.StarBorder loading={loadingStar} color={Colors.white} />
           </IconButton>
         )}
@@ -83,7 +104,7 @@ export const GenericCard = () => {
             <FiExternalLink color="white" />
           </IconButton>
         </Tooltip>
-      </CardActions>
-    </Card>
+      </S.CardActionsContainer>
+    </S.CardMainContainer>
   );
 };
