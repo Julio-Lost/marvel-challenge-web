@@ -84,9 +84,9 @@ export const Dashboard = ({
         ) : firstSearchPerformed && data.length === 0 ? (
           <NoResults />
         ) : (
-          <div style={{ paddingTop: 42 }}>
+          <S.CustomListCardContainer>
             <ListCard data={data} />
-          </div>
+          </S.CustomListCardContainer>
         )}
       </S.CustomDivCardContainer>
     </S.MainContainer>

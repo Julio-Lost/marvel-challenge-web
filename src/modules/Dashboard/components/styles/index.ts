@@ -86,3 +86,7 @@ export const CustomDivFavoriteContainer = styled.div`
 export const CustomSpan = styled.span`
   font-size: 14px;
 `;
+
+export const CustomListCardContainer = styled.div`
+  padding-top: 42px;
+`;
