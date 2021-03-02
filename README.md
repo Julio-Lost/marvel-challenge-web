@@ -2,6 +2,8 @@
 
 The project consists of a client-side application where you will find all the information about the Marvel comics and characters.
 
+[web](marvel-stone-challenge-web.netlify.app)
+
 <br>
 
 `Login`:
