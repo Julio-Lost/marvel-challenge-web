@@ -28,11 +28,7 @@ export const CharacterInfo = ({ navigateToDashboard, characters, loading }: Char
       </S.Header>
       <S.CustomDiv>
         <S.CustomDivContainer>
-          <Grid justify="center" container spacing={4}>
-            <S.CustomGrid key={Math.random()} item xs={12} sm={6} md={6} lg={4}>
-              {loading ? <Loading /> : characters.length === 0 ? <NoResults /> : <ListCard data={characters} />}
-            </S.CustomGrid>
-          </Grid>
+          {loading ? <Loading /> : characters.length === 0 ? <NoResults /> : <ListCard data={characters} />}
         </S.CustomDivContainer>
       </S.CustomDiv>
     </S.MainContainer>

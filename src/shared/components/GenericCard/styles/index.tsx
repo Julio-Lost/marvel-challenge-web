@@ -97,8 +97,13 @@ export const HeaderContainer = styled.div`
   padding: 24px;
   width: 350px;
 
-  @media (max-width: 600px) {
+  @media (max-width: 850px) {
     text-align: left;
     width: 250px;
+  }
+
+  @media (max-width: 281px) {
+    text-align: left;
+    width: 200px;
   }
 `;
