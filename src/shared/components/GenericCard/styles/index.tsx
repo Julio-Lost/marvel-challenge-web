@@ -8,7 +8,7 @@ interface CardProps {
 }
 
 interface StarProps {
-  loading: boolean;
+  $loading: boolean;
 }
 
 const appearFromRight = keyframes`
@@ -49,7 +49,7 @@ const animationRotation = keyframes`
 
 export const Star = styled(MdStar)<StarProps>`
   ${props =>
-    props.loading
+    props.$loading
       ? css`
           animation: ${animationRotation} infinite 2s linear;
         `
@@ -58,7 +58,7 @@ export const Star = styled(MdStar)<StarProps>`
 
 export const StarBorder = styled(MdStarBorder)<StarProps>`
   ${props =>
-    props.loading
+    props.$loading
       ? css`
           animation: ${animationRotation} infinite 2s linear;
         `

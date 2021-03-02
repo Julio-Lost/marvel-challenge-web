@@ -8,6 +8,7 @@ import logoImg from '../../../assets/logo.svg';
 import { IRequestCreateUser } from '../../../models/CreateUser';
 import Button from '../../../shared/components/Button';
 import Input from '../../../shared/components/Form/Input';
+import { Loading } from '../../../shared/components/Loading';
 import getValidationErrors from '../../../shared/validations/getValidationErros';
 import { AnimationContainer, Background, Container, Content } from './styles';
 
@@ -57,9 +58,13 @@ export const SignUp = ({ actionCreateUser, loading }: SignUpProps) => {
             <Input name="name" icon={FiUser} placeholder="Nome" />
             <Input name="email" icon={FiMail} placeholder="E-mail" />
             <Input name="password" icon={FiLock} type="password" placeholder="Senha" />
-            <Button type="submit" disabled={loading}>
-              Cadastrar
-            </Button>
+            {loading ? (
+              <Loading />
+            ) : (
+              <Button type="submit" disabled={loading}>
+                Cadastrar
+              </Button>
+            )}
           </Form>
           <Link to="/">
             <FiArrowLeft />

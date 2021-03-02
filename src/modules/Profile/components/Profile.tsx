@@ -9,6 +9,7 @@ import { useAuthenticationContext } from '../../../context/reducers/auth/authCon
 import { IRequestUpdateProfile } from '../../../models/UpdateProfile';
 import Button from '../../../shared/components/Button';
 import Input from '../../../shared/components/Form/Input';
+import { Loading } from '../../../shared/components/Loading';
 import getValidationErrors from '../../../shared/validations/getValidationErros';
 import { Colors } from '../../../useful/constants/colors';
 import * as S from './styles';
@@ -110,9 +111,13 @@ export const Profile = ({ actionUpdateProfile, navigateToDashboard, loading }: P
             />
             <Input name="password" icon={FiLock} type="password" placeholder="Nova senha" />
             <Input name="password_confirmation" icon={FiLock} type="password" placeholder="Confirmar senha" />
-            <Button type="submit" disabled={loading}>
-              Confirmar mudanças
-            </Button>
+            {loading ? (
+              <Loading />
+            ) : (
+              <Button type="submit" disabled={loading}>
+                Confirmar mudanças
+              </Button>
+            )}
           </Form>
         </S.Content>
       </S.CustomDiv>
