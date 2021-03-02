@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import { useAuthenticationContext } from '../../../context/reducers/auth/authContext';
 import { IRequestUpdateProfile } from '../../../models/UpdateProfile';
 import Button from '../../../shared/components/Button';
-import Input from '../../../shared/components/form/Input';
+import Input from '../../../shared/components/Form/Input';
 import getValidationErrors from '../../../shared/validations/getValidationErros';
 import { Colors } from '../../../useful/constants/colors';
 import * as S from './styles';

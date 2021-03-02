@@ -1,4 +1,3 @@
-import { useSnackbar } from 'notistack';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import React, { useCallback, useRef } from 'react';
@@ -8,7 +7,7 @@ import * as Yup from 'yup';
 import logoImg from '../../../assets/logo.svg';
 import { IRequestSession } from '../../../models/Login';
 import Button from '../../../shared/components/Button';
-import Input from '../../../shared/components/form/Input';
+import Input from '../../../shared/components/Form/Input';
 import { AnimationContainer, Background, Container, Content } from './styles';
 import getValidationErrors from '../../../shared/validations/getValidationErros';
 
@@ -19,7 +18,6 @@ interface LoginProps {
 
 export const Login = ({ createSessionAction, loading }: LoginProps) => {
   const formRef = useRef<FormHandles>(null);
-  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = useCallback(
     async (data: IRequestSession) => {
@@ -44,10 +42,9 @@ export const Login = ({ createSessionAction, loading }: LoginProps) => {
 
           return;
         }
-        enqueueSnackbar('Ocorreu um erro ao fazer login, cheque as credenciais.', { variant: 'error' });
       }
     },
-    [createSessionAction, enqueueSnackbar],
+    [createSessionAction],
   );
 
   return (

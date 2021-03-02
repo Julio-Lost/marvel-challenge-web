@@ -1,6 +1,7 @@
-import { Card } from '@material-ui/core';
+import { Card, CardActions, Grid } from '@material-ui/core';
 import { MdStar, MdStarBorder } from 'react-icons/md';
 import styled, { css, keyframes } from 'styled-components';
+import { Colors } from '../../../../useful/constants/colors';
 
 interface CardProps {
   imgurl: string;
@@ -25,11 +26,12 @@ export const CardContainer = styled(Card)<CardProps>`
   background-image: ${props => `url(${props.imgurl})`};
   background-size: cover;
   background-repeat: no-repeat;
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 350px;
   animation: ${appearFromRight} 1s;
-  min-width: 250px;
+  min-width: 350px;
   min-height: 250px;
+  width: 100%;
 
   &.MuiPaper-rounded {
     border-radius: 8px;
@@ -61,4 +63,42 @@ export const StarBorder = styled(MdStarBorder)<StarProps>`
           animation: ${animationRotation} infinite 2s linear;
         `
       : ''}
+`;
+
+export const CardMainContainer = styled(Card)`
+  &.MuiCard-root {
+    background-color: ${Colors.black};
+    color: ${Colors.white};
+    border-radius: 20px;
+    margin: 4px;
+    white-space: nowrap;
+  }
+`;
+
+export const CardActionsContainer = styled(CardActions)`
+  display: flex;
+  justify-content: center;
+`;
+
+export const CustomGrid = styled(Grid)`
+  &.MuiGrid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const HeaderContainer = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 18px;
+  text-align: center;
+  padding: 24px;
+  width: 350px;
+
+  @media (max-width: 600px) {
+    text-align: left;
+    width: 250px;
+  }
 `;

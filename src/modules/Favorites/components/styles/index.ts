@@ -29,6 +29,8 @@ export const CustomDivCardContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
 
   @media (max-width: 600px) {
     flex-direction: column;

@@ -5,8 +5,8 @@ import CharacterInfoScreen from '../modules/CharacterInfo/containers/CharacterIn
 import ComicInfoScreen from '../modules/ComicInfo/containers/ComicInfoScreen';
 
 export const INFO_PATH = {
-  CharacterInfo: '/character-info',
-  ComicInfo: '/comic-info',
+  CharacterInfo: '/comic/:comicId/characters',
+  ComicInfo: '/character/:characterId/comics',
 };
 
 const InfoRoutes = () => {
