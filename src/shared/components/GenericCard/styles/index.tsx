@@ -97,7 +97,7 @@ export const HeaderContainer = styled.div`
   padding: 24px;
   width: 350px;
 
-  @media (max-width: 850px) {
+  @media (max-width: 1080px) {
     text-align: left;
     width: 250px;
   }
