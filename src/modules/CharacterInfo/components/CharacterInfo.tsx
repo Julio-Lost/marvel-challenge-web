@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { Grid, IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import React from 'react';
 import { IoMdArrowBack } from 'react-icons/io';
 import { IGenericCard } from '../../../shared/components/GenericCard/GenericCard';

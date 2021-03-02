@@ -1,4 +1,3 @@
-import { Grid } from '@material-ui/core';
 import styled from 'styled-components';
 import { Colors } from '../../../../useful/constants/colors';
 
@@ -43,14 +42,6 @@ export const CustomDiv = styled.div`
   }
   @media (max-width: 600px) {
     padding: 36px 5%;
-  }
-`;
-
-export const CustomGrid = styled(Grid)`
-  &.MuiGrid-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 `;
 
