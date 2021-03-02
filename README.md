@@ -10,7 +10,7 @@ The project consists of a client-side application where you will find all the in
 
 <div>
   <p align="center">
-    <img src="https://a.imagem.app/AkR9Rl.png" alt="login" height="325" width="90%">
+    <img src="https://a.imagem.app/AkR9Rl.png" alt="login">
   </p>
 </div>
 
@@ -18,7 +18,7 @@ The project consists of a client-side application where you will find all the in
 
 <div>
   <p align="center">
-    <img src="https://a.imagem.app/AkR5XP.png" alt="register" height="325" width="90%">
+    <img src="https://a.imagem.app/AkR5XP.png" alt="signup">
   </p>
 </div>
 
@@ -26,7 +26,7 @@ The project consists of a client-side application where you will find all the in
 
 <div>
   <p align="center">
-    <img src="https://a.imagem.app/AkRwev.png" alt="dashboard" height="325" width="90%">
+    <img src="https://a.imagem.app/AkRwev.png" alt="dashboard">
   </p>
 </div>
 
@@ -34,7 +34,7 @@ The project consists of a client-side application where you will find all the in
 
 <div>
   <p align="center">
-    <img src="https://a.imagem.app/AkRu2Z.png" alt="update" height="325" width="90%">
+    <img src="https://a.imagem.app/AkRu2Z.png" alt="update">
   </p>
 </div>
 
@@ -42,7 +42,7 @@ The project consists of a client-side application where you will find all the in
 
 <div>
   <p align="center">
-    <img src="https://a.imagem.app/AkRCLT.png" alt="search-comics" height="325" width="90%">
+    <img src="https://a.imagem.app/AkRCLT.png" alt="search-comics">
   </p>
 </div
 
@@ -50,7 +50,7 @@ The project consists of a client-side application where you will find all the in
 
 <div>
   <p align="center">
-    <img src="https://a.imagem.app/AkRr8S.png" alt="search-characters" height="325" width="90%">
+    <img src="https://a.imagem.app/AkRr8S.png" alt="search-characters">
   </p>
 </div
 
@@ -58,7 +58,7 @@ The project consists of a client-side application where you will find all the in
 
 <div>
   <p align="center">
-    <img src="https://a.imagem.app/AkRLy3.png" alt="comics-of-character" height="325" width="90%">
+    <img src="https://a.imagem.app/AkRLy3.png" alt="comics-of-character">
   </p>
 </div
 
@@ -66,7 +66,7 @@ The project consists of a client-side application where you will find all the in
 
 <div>
   <p align="center">
-    <img src="https://a.imagem.app/AkRIV8.png" alt="characters-of-comic" height="325" width="90%">
+    <img src="https://a.imagem.app/AkRIV8.png" alt="characters-of-comic">
   </p>
 </div
 
