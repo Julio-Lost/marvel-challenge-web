@@ -1,4 +1,4 @@
-# Stone Challenge Web
+# Marvel Challenge Web
 
 The project consists of a client-side application where you will find all the information about the Marvel comics and characters.
 
