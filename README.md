@@ -2,7 +2,7 @@
 
 The project consists of a client-side application where you will find all the information about the Marvel comics and characters.
 
-- Access here: marvel-stone-challenge-web.netlify.app
+- Access here: https://marvel-challenge-web.netlify.app
 
 <br>
 
@@ -84,7 +84,7 @@ The project consists of a client-side application where you will find all the in
 
 ## Running the application in a development environment
 
-- Clone this repository with the command: <br>git clone https://github.com/Julio-Lost/stone-challenge-web.git
+- Clone this repository with the command: <br>git clone https://github.com/Julio-Lost/marvel-challenge-web.git
 
 - Have NPM or Yarn installed.
 
