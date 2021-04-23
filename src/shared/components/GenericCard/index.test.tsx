@@ -4,7 +4,7 @@ import { IGenericCard } from './GenericCard';
 import { ListCard } from './ListCard';
 
 describe('<Card list/>', () => {
-  it('should be render tooltip correctly', () => {
+  it('should be render card correctly', () => {
     const data: IGenericCard[] = [
       {
         id: '1234231411',
